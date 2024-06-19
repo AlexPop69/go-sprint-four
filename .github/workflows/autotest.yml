@@ -6,7 +6,7 @@ jobs:
 
   ftrackertest:
     runs-on: ubuntu-latest
-    container: golang:1.21
+    container: golang:1.20
 
     steps:
       - name: Checkout code
@@ -20,10 +20,9 @@ jobs:
 
       - name: Gather files
         run: |
-          cp .autotests/cmd/fitnesstest/main_test.go ftracker/main_test.go
+          cp .autotests/cmd/fitnesstest/main_test.go main_test.go
 
       - name: Run tests
         run: |
           go mod tidy
-          cd ftracker
           go test -test.v ./...
